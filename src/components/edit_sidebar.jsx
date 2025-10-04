@@ -13,7 +13,6 @@ const Sidebar = ({
   featuresexplanation,
   setFeatures,
   setFeaturesExplanation,
-
   whyuseline,
   whyusepoints,
   setWhyuseLine,
