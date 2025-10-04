@@ -22,7 +22,6 @@ const Sidebar = ({
 
   const user = auth.currentUser;
 
-
   const handleBenefitChange = (index, field, value) => {
     const updated = [...benefits];
     updated[index][field] = value;
