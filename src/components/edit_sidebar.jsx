@@ -21,7 +21,6 @@ const Sidebar = ({
 }) => {
 
 
-
   const user = auth.currentUser;
 
 
