@@ -200,7 +200,6 @@ const removeWhyUsePoint = (index) => {
             ))}
           </div>
         </section>
-
         
         {/* Why Use */}
 <section>
