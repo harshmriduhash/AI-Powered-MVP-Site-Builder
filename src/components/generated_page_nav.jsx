@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
-const Generated_Page_Nav = ({ makesidebarshow,setPreview,handlePublishButton }) => {
-  const [menuOpen, setMenuOpen] = useState(false);   
+const Generated_Page_Nav = ({
+  makesidebarshow,
+  setPreview,
+  handlePublishButton,
+}) => {
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <nav className="w-full z-50 fixed top-0 left-0 bg-white/80 backdrop-blur-md border-b shadow-sm">
@@ -23,9 +27,12 @@ const Generated_Page_Nav = ({ makesidebarshow,setPreview,handlePublishButton }) 
             </button>
           </li>
           <li>
-            <button className="hover:text-blue-600 transition" onClick={()=>{
+            <button
+              className="hover:text-blue-600 transition"
+              onClick={() => {
                 setPreview(true);
-            }}>
+              }}
+            >
               Preview
             </button>
           </li>
@@ -33,8 +40,10 @@ const Generated_Page_Nav = ({ makesidebarshow,setPreview,handlePublishButton }) 
 
         {/* Desktop Button */}
         <div className="hidden md:block">
-          <button className="px-4 py-2 rounded-xl text-sm font-semibold transition-colors bg-blue-500 text-white hover:bg-blue-400" 
-          onClick={handlePublishButton}>
+          <button
+            className="px-4 py-2 rounded-xl text-sm font-semibold transition-colors bg-blue-500 text-white hover:bg-blue-400"
+            onClick={handlePublishButton}
+          >
             Publish
           </button>
         </div>
@@ -64,11 +73,11 @@ const Generated_Page_Nav = ({ makesidebarshow,setPreview,handlePublishButton }) 
             </li>
             <li>
               <button
-                onClick={() => {setMenuOpen(false)
-                    setPreview(true);
+                onClick={() => {
+                  setMenuOpen(false);
+                  setPreview(true);
                 }}
                 className="block w-full text-left hover:text-blue-600 transition"
-
               >
                 Preview
               </button>
@@ -76,10 +85,10 @@ const Generated_Page_Nav = ({ makesidebarshow,setPreview,handlePublishButton }) 
             <li>
               <button
                 onClick={() => {
-                    handlePublishButton();
-                    setMenuOpen(false)}}
+                  handlePublishButton();
+                  setMenuOpen(false);
+                }}
                 className="block w-full text-left font-bold text-black hover:text-blue-600 transition"
-
               >
                 Publish
               </button>
