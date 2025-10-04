@@ -1,6 +1,5 @@
-
-import  { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 const Loader = () => {
   const dotsRef = useRef([]);
@@ -12,12 +11,12 @@ const Loader = () => {
       y: -20,
       duration: 0.4,
       stagger: 0.1,
-      ease: 'power1.inOut',
+      ease: "power1.inOut",
     }).to(dotsRef.current, {
       y: 0,
       duration: 0.4,
       stagger: 0.1,
-      ease: 'bounce.out',
+      ease: "bounce.out",
     });
 
     return () => tl.kill();
