@@ -1,6 +1,3 @@
-
-
-
 const Button = ({ text, color , bgcolor_border ,onClick }) => {
   return (
     <button className={`relative px-5 py-2.5 overflow-hidden font-medium text-gray-600 border ${bgcolor_border}  rounded-lg shadow-inner group mt-6`}
