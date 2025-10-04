@@ -1,6 +1,4 @@
 import { Edit3, Type, List, Save, X, Star , HelpCircle } from 'lucide-react';
-
-
 import { auth } from '../firebase';
 
 
