@@ -24,7 +24,6 @@ const Sidebar = ({
 
 
 
-
   const handleBenefitChange = (index, field, value) => {
     const updated = [...benefits];
     updated[index][field] = value;
