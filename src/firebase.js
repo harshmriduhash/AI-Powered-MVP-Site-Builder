@@ -5,7 +5,6 @@ import { getFunctions,connectFunctionsEmulator } from "firebase/functions";
 import { getStorage } from "firebase/storage";
 
 
-
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_APIKEY,
   authDomain: "ai-powered-mvp-builder.firebaseapp.com",
