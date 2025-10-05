@@ -9,7 +9,6 @@ import deleteAccount from "../services/deleteaccount";
 import GoogleAccountDeletion from "../services/googleaccountdeletion";
 import { doc , deleteDoc } from "firebase/firestore";
 import usePlanData from "../hook/useplandata";
-
 import { getFunctions, httpsCallable } from "firebase/functions";
 import { useProducts } from "../context/productsContext";
 import Subscribers from "./subscribers";
