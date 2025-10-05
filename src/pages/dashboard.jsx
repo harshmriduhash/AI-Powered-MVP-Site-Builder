@@ -19,7 +19,6 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const {username} = useUsername();
   const email = useEmail();
-
   const { id } = useParams();
   const {products , setProducts , loading} = useProducts();
   const [expanded, setExpanded] = useState({});
