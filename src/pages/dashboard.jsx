@@ -7,7 +7,6 @@ import Loader from "../components/loading";
 import useEmail from "../services/getcurrentemail";
 import deleteAccount from "../services/deleteaccount";
 import GoogleAccountDeletion from "../services/googleaccountdeletion";
-
 import { doc , deleteDoc } from "firebase/firestore";
 import usePlanData from "../hook/useplandata";
 
