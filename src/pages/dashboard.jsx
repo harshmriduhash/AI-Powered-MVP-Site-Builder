@@ -5,7 +5,6 @@ import useUsername from "../services/getcurrentusername";
 import { Plus, Calendar, Users, ChevronDown, ChevronUp, Mail, User ,X , Trash2 ,Menu,LinkIcon, CopyIcon , CreditCard , Loader2  } from "lucide-react";
 import Loader from "../components/loading";
 import useEmail from "../services/getcurrentemail";
-
 import deleteAccount from "../services/deleteaccount";
 import GoogleAccountDeletion from "../services/googleaccountdeletion";
 
