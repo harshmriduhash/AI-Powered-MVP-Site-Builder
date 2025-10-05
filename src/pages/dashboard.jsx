@@ -16,7 +16,6 @@ import AccountSettings from "../components/accountsettings";
 
 const Dashboard = () => {
 
-
   const navigate = useNavigate();
   const {username} = useUsername();
   const email = useEmail();
