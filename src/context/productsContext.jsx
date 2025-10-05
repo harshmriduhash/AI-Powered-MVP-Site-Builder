@@ -1,7 +1,7 @@
 
 import { createContext, useState, useContext, useEffect } from "react";
 import { collection, onSnapshot } from "firebase/firestore";
-import { db } from "../firebase";
+import { db, hasValidConfig } from "../firebase";
 import { useAuth } from "./authContext";
 
 const ProductsContext = createContext();
@@ -12,7 +12,10 @@ export const ProductsProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!currentUser?.uid) return;
+    if (!currentUser?.uid || !db || !hasValidConfig) {
+      setLoading(false);
+      return;
+    }
 
     const pagesRef = collection(db, "users", currentUser.uid, "pages");
 

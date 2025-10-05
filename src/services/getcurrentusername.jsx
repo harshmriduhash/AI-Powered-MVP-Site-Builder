@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
-import { auth, db } from "../firebase";
+import { auth, db, hasValidConfig } from "../firebase";
 
 const useUsername = () => {
   const [username, setUsername] = useState(null);
@@ -8,12 +8,15 @@ const useUsername = () => {
 
 
   useEffect(() => {
-
-
     const fetchUsername = async () => {
+      if (!auth || !db || !hasValidConfig) {
+        // Return demo username when Firebase is not configured
+        setUsername("demo-user");
+        setUid("demo-uid");
+        return;
+      }
+
       const user = auth.currentUser;
-
-
 
       if(user) setUid(user.uid);
       

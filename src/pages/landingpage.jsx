@@ -99,7 +99,11 @@ const testimonials = [
 
 const LandingPage = () => {
 
-const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
+// Check if Gemini API key is available
+const geminiApiKey = import.meta.env.VITE_GEMINI_API_KEY;
+const hasValidGeminiKey = geminiApiKey && geminiApiKey !== 'your_google_ai_api_key';
+
+const genAI = hasValidGeminiKey ? new GoogleGenerativeAI(geminiApiKey) : null;
 const {username}=useUsername();
 
 
@@ -124,9 +128,13 @@ const {username}=useUsername();
 };
 
 
-const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" }); 
+const model = genAI ? genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" }) : null; 
 const generateProductName =async () =>{
   try {
+    if (!genAI || !model) {
+      // Return a demo name when API is not available
+      return "demo-product";
+    }
   
 const prompt = `Generate a catchy product name based on this description: "${description}".
 Rules:
@@ -227,6 +235,12 @@ PRODUCT DESCRIPTION: ${description}`;
   if(description.trim()!==""){
 
     try{
+      if (!genAI || !model) {
+        // Show demo message when API is not available
+        alert("Demo mode: AI services are not configured. Please set up your API keys in the .env file to use this feature.");
+        setButtonLoading(false);
+        return;
+      }
 
     const result = await model.generateContent(prompt_product);
     const response = await result.response;
@@ -244,6 +258,7 @@ PRODUCT DESCRIPTION: ${description}`;
     });
     }catch(err){
       console.log("error:",err);
+      alert("Error generating product. Please check your API configuration.");
     }
     finally{
       setButtonLoading(false);
