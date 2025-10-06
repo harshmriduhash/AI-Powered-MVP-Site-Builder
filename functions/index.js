@@ -7,7 +7,6 @@ admin.initializeApp();
 const isLocal = process.env.FUNCTIONS_EMULATOR === "true";
 if (isLocal) require("dotenv").config();
 
-
             const successUrl = isLocal
         ? "http://localhost:5173/success"
         : "https://mvp-go-seven.vercel.app/success";
