@@ -68,7 +68,7 @@ BloomQueue is an AI-powered MVP validation platform that helps entrepreneurs and
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/AI-Powered-MVP-Site-Builder.git
+   git clone https://github.com/harshmriduhash/AI-Powered-MVP-Site-Builder.git
    cd AI-Powered-MVP-Site-Builder
    ```
 
