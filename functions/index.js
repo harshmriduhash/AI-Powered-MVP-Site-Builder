@@ -22,7 +22,6 @@ if (isLocal) require("dotenv").config();
 
 
 
-
 exports.createCheckoutSession = functions
   .runWith({
     secrets: ["STRIPE_SECRET_KEY", "STRIPE_PRICE_ID", "STRIPE_ONE_TIME"]
