@@ -15,7 +15,6 @@ if (isLocal) require("dotenv").config();
         ? "http://localhost:5173/cancel"
         : "https://mvp-site-builder.vercel.app/cancel";
 
-
         const linkingurl = isLocal
         ? "http://localhost:5173/"
         :"https://mvp-site-builder.vercel.app/";
