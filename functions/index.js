@@ -9,7 +9,7 @@ if (isLocal) require("dotenv").config();
 
             const successUrl = isLocal
         ? "http://localhost:5173/success"
-        : "https://mvp-go-seven.vercel.app/success";
+        : "https://mvp-site-builder.vercel.app/success";
 
       const cancelUrl = isLocal
         ? "http://localhost:5173/cancel"
