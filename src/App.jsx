@@ -43,14 +43,9 @@ function App() {
             <Route path = "/ideainput" element = {<InputIdea />}/>
             <Route path="/register" element={<Register/>}/>
             <Route path="/login" element={<Login/>}/>
-
-
             <Route path="/success" element={<Success />} />
-            <Route path="/cancel" element={<Cancel />} /> 
-
-
+            <Route path="/cancel" element={<Cancel />} />
             <Route path="/forget-password" element={<ForgetPassword/>}/>
-
             <Route path="/change-password" element={
               <ProtectedRoute>
               <Changepassword />
