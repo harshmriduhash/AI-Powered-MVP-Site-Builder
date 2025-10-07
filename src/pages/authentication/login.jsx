@@ -22,7 +22,6 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [invalid, setInvalid] = useState(false);
 
-
   const [showemailverification , setShowEmailVerification] = useState(false);
 
   const handleResendVerificationEmail = async ()=>{
