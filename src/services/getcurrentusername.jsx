@@ -4,8 +4,7 @@ import { auth, db, hasValidConfig } from "../firebase";
 
 const useUsername = () => {
   const [username, setUsername] = useState(null);
-  const [uid , setUid] = useState(null);
-
+  const [uid, setUid] = useState(null);
 
   useEffect(() => {
     const fetchUsername = async () => {
@@ -18,23 +17,21 @@ const useUsername = () => {
 
       const user = auth.currentUser;
 
-      if(user) setUid(user.uid);
-      
-      
-      if (user && !username ) {
+      if (user) setUid(user.uid);
+
+      if (user && !username) {
         const docRef = doc(db, "users", user.uid);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
           setUsername(docSnap.data().username);
-          
         }
       }
     };
     fetchUsername();
   }, []);
 
-  return {username,uid};
+  return { username, uid };
 };
 
 export default useUsername;
