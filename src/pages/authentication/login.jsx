@@ -25,7 +25,6 @@ const Login = () => {
 
   const [showemailverification , setShowEmailVerification] = useState(false);
 
-
   const handleResendVerificationEmail = async ()=>{
     const user = auth.currentUser;;
 
