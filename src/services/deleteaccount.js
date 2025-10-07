@@ -1,7 +1,10 @@
 import { auth, db } from "../firebase";
 import { deleteDoc, doc } from "firebase/firestore";
-import { deleteUser, reauthenticateWithCredential, EmailAuthProvider } from "firebase/auth";
-
+import {
+  deleteUser,
+  reauthenticateWithCredential,
+  EmailAuthProvider,
+} from "firebase/auth";
 
 const deleteAccount = async (email, password) => {
   const user = auth.currentUser;
@@ -11,7 +14,6 @@ const deleteAccount = async (email, password) => {
 
     const credential = EmailAuthProvider.credential(email, password);
     await reauthenticateWithCredential(user, credential);
-
 
     await deleteDoc(doc(db, "users", user.uid));
 
