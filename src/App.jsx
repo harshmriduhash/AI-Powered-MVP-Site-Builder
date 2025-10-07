@@ -2,7 +2,6 @@ import Dashboard from "./pages/dashboard";
 import InputIdea from "./pages/inputidea";
 import LandingPage from "./pages/landingpage";
 import NotFoundPage from "./pages/notfound";
-
 import Register from "./pages/authentication/register";
 import Login from "./pages/authentication/login";
 import { BrowserRouter , Routes , Route } from "react-router-dom";
