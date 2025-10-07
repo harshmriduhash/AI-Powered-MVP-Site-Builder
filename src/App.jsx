@@ -16,7 +16,6 @@ import Changepassword from "./pages/authentication/changepassword";
 
 
 
-
 import Success from "./pages/successpayment";
 import Cancel from "./pages/cancelpayment";
 
