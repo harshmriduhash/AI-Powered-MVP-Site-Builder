@@ -19,7 +19,6 @@ import Changepassword from "./pages/authentication/changepassword";
 import Success from "./pages/successpayment";
 import Cancel from "./pages/cancelpayment";
 
-
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
