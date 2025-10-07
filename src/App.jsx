@@ -28,7 +28,6 @@ function App() {
   <AuthProvider>
     <ProductsProvider >
     <BrowserRouter>
-
     <ToastContainer position="top-right" autoClose={3000} />
     
         <Routes>
