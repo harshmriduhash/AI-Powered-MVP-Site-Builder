@@ -26,7 +26,6 @@ const Dashboard = () => {
   const [showConfirm, setShowConfirm] = useState(false);
   const [showsidebar , setShowSidebar] = useState(false);
   const [password, setPassword] = useState("");
-
   const [connected , setConnected] = useState(null);
 
 
