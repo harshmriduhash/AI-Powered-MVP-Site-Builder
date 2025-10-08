@@ -27,7 +27,6 @@ const Dashboard = () => {
   const [showsidebar , setShowSidebar] = useState(false);
   const [password, setPassword] = useState("");
   const [connected , setConnected] = useState(null);
-
   const [stripeloading , setStripeLoading] = useState(false);
 
 
