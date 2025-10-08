@@ -24,7 +24,6 @@ const Dashboard = () => {
   const [expanded, setExpanded] = useState({});
   const [accountsettings, setAccountsettings] = useState(false);
 
-
   const [showConfirm, setShowConfirm] = useState(false);
 
 
