@@ -32,7 +32,6 @@ const Dashboard = () => {
   const [showProjects,setShowProjects] = useState(true);
   const [showAccountSettings,setShowAccountSettings] = useState(false);
   
-
   const plandata = usePlanData();
 
   const functions = getFunctions();
