@@ -152,23 +152,20 @@ const handlestripelinking = async ()=>{
                   <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
                 </svg>
               </div>
+
 <div className="flex items-center w-full justify-between">
   
   <div>
     <h2 className="text-lg font-semibold text-slate-900">Dashboard</h2>
     <p className="text-xs text-slate-500">Workspace</p>
   </div>
-
-
-    <span
+  <span
       className="md:hidden cursor-pointer p-1 rounded hover:bg-gray-200"
       onClick={() => setShowSidebar(false)}
       aria-label="Close sidebar"
       role="button"
-    >
-      <X size={20} />
-    </span>
-  
+    ><X size={20} />
+  </span>
 </div>
             </div>
           </div>
