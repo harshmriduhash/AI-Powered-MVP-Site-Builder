@@ -131,10 +131,6 @@ const handlestripelinking = async ()=>{
     };
     checkConnection();
   }, [auth.currentUser, functions]);
-
-
-
-
    if (loading) {
     return <Loader />;
   }
