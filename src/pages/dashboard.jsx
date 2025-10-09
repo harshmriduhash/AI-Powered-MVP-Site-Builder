@@ -627,7 +627,6 @@ transform hover:-translate-y-0.5"
           </>
         )}
 
-
                 {showAccountSettings && (
           <>
             <main className="flex-1 ml-0 md:ml-72">
