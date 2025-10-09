@@ -117,7 +117,6 @@ const handlestripelinking = async ()=>{
 
 
  useEffect(() => {
-
     const checkConnection = async () => {
       if (!auth.currentUser) return;
       try {
