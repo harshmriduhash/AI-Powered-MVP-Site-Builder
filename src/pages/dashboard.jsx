@@ -626,7 +626,6 @@ transform hover:-translate-y-0.5"
             </main>
           </>
         )}
-
                 {showAccountSettings && (
           <>
             <main className="flex-1 ml-0 md:ml-72">
@@ -639,12 +638,8 @@ transform hover:-translate-y-0.5"
             </main>
           </>
         )}
-
       </div>
     </div>
-
-
-
   );
 };
 
