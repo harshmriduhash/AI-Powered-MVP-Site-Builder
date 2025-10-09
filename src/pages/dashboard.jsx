@@ -416,10 +416,7 @@ const handlestripelinking = async ()=>{
             {/* Header Section */}
             <div className="mb-8">
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-
-
-<div className="flex flex-col md:flex-row md:items-center md:justify-between">
-
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
 
   <div>
     <div className="flex items-center justify-between space-x-2">
