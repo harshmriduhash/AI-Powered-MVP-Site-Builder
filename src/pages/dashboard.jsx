@@ -98,7 +98,6 @@ const handlestripelinking = async ()=>{
     
     const createStripeConnectLink = httpsCallable(functions, "createStripeConnectLink");
     const result = await createStripeConnectLink({ email: user.email });
-
     const { url } = result.data;
 
     if (!url) {
