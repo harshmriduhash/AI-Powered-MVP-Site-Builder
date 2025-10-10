@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { db , auth } from "../firebase";
 import useUsername from "../services/getcurrentusername";
-import { Plus, Calendar, Users, ChevronDown, ChevronUp, Mail, User, X, Trash2, Menu,LinkIcon, CopyIcon, CreditCard, Loader2  } from "lucide-react";
+import { Plus, Calendar, Users, ChevronDown, ChevronUp, Mail, User, X, Trash2, Menu, LinkIcon, CopyIcon, CreditCard, Loader2  } from "lucide-react";
 import Loader from "../components/loading";
 import useEmail from "../services/getcurrentemail";
 import deleteAccount from "../services/deleteaccount";
