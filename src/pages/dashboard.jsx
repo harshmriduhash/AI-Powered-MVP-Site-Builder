@@ -73,7 +73,6 @@ const handleDeleteproduct = async (id) => {
 
 
     const pageRef = doc(db, "users", user.uid, "pages", id);
-
     await deleteDoc(pageRef);
 
     setProducts((prev) => prev ? prev.filter((p) => p.id !== id) : []);
