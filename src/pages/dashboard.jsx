@@ -56,7 +56,6 @@ const Dashboard = () => {
     setShowAccountSettings(true);
   }
 
-
     const handleDelete = async () => {
     await deleteAccount(email,password);
     
