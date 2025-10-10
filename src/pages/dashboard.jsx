@@ -343,7 +343,6 @@ const handlestripelinking = async ()=>{
 </div>
 
               </button>
-
             </div>
           </nav>
 
