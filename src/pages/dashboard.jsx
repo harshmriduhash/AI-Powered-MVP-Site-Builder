@@ -58,7 +58,6 @@ const Dashboard = () => {
 
 
     const handleDelete = async () => {
-
     await deleteAccount(email,password);
     
   };
