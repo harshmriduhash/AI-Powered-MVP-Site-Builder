@@ -18,7 +18,6 @@ const AccountSettings = ({ plandata, handlegoogledelete, handleDelete }) => {
   const [showConfirm, setShowConfirm] = useState(false);
   const [password, setPassword] = useState("");
 
-
   const email = useEmail();
   const {username} = useUsername();
   const currentUser = auth.currentUser;
