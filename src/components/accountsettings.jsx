@@ -24,7 +24,6 @@ const AccountSettings = ({ plandata, handlegoogledelete, handleDelete }) => {
   const user = auth.currentUser;  
   const {products} = useProducts();  
   const storage = getStorage();
-
   const [uploading, setUploading] = useState(false);
 
   const handleFileChange = async (e) => {
