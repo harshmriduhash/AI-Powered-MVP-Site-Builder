@@ -20,7 +20,6 @@ const AccountSettings = ({ plandata, handlegoogledelete, handleDelete }) => {
   const email = useEmail();
   const {username} = useUsername();
   const currentUser = auth.currentUser;
-
   const [displayName, setDisplayName] = useState("");
   const user = auth.currentUser;  
   const {products} = useProducts();  
