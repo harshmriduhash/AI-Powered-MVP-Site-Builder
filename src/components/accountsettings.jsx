@@ -13,7 +13,6 @@ import { useNavigate } from "react-router-dom";
 
 const AccountSettings = ({ plandata, handlegoogledelete, handleDelete }) => {
 
-
   const navigate = useNavigate();
   const [showConfirm, setShowConfirm] = useState(false);
   const [password, setPassword] = useState("");
