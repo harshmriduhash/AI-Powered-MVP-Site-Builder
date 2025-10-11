@@ -10,7 +10,6 @@ const GoogleAccountDeletion =async () => {
 
     await reauthenticateWithPopup(user, provider);
 
-
     await deleteDoc(doc(db, "users", user.uid));
 
 
