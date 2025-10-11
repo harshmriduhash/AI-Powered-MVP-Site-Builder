@@ -1,5 +1,16 @@
 import { useEffect, useState } from "react";
-import { Trash2, X, Settings, User, Mail, Calendar, Package, Upload, LogOut, Crown } from "lucide-react";
+import {
+  Trash2,
+  X,
+  Settings,
+  User,
+  Mail,
+  Calendar,
+  Package,
+  Upload,
+  LogOut,
+  Crown,
+} from "lucide-react";
 import { auth } from "../firebase";
 import useUsername from "../services/getcurrentusername";
 import useEmail from "../services/getcurrentemail";
@@ -9,19 +20,16 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useProducts } from "../context/productsContext";
 import { useNavigate } from "react-router-dom";
 
-
-
 const AccountSettings = ({ plandata, handlegoogledelete, handleDelete }) => {
-
   const navigate = useNavigate();
   const [showConfirm, setShowConfirm] = useState(false);
   const [password, setPassword] = useState("");
   const email = useEmail();
-  const {username} = useUsername();
+  const { username } = useUsername();
   const currentUser = auth.currentUser;
   const [displayName, setDisplayName] = useState("");
   const user = auth.currentUser;
-  const {products} = useProducts();  
+  const { products } = useProducts();
   const storage = getStorage();
   const [uploading, setUploading] = useState(false);
 
@@ -45,23 +53,22 @@ const AccountSettings = ({ plandata, handlegoogledelete, handleDelete }) => {
     }
   };
 
-  const handlelogout = async ()=>{
-    try{
-    await signOut(auth);
-    console.log("Signed Out");    
+  const handlelogout = async () => {
+    try {
+      await signOut(auth);
+      console.log("Signed Out");
+    } catch (err) {
+      console.log("Error in sign out , in acocunt settings", err);
     }
-    catch(err){
-        console.log("Error in sign out , in acocunt settings",err);
-    }
-  }
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     if (user?.displayName) {
       setDisplayName(user.displayName);
     } else if (username) {
       setDisplayName(username);
     }
-  },[])
+  }, []);
 
   const [photoURL, setPhotoURL] = useState(currentUser?.photoURL || "");
   const displayEmail = currentUser?.email || email;
@@ -75,15 +82,15 @@ const AccountSettings = ({ plandata, handlegoogledelete, handleDelete }) => {
     : "";
 
   const handleSave = async () => {
-    try{
+    try {
       if (auth.currentUser) {
         await updateProfile(auth.currentUser, {
-          displayName:displayName, 
+          displayName: displayName,
         });
         toast.success("Updated Successfully");
       }
-    }catch(err){
-        console.log("error in account settings : " , err)
+    } catch (err) {
+      console.log("error in account settings : ", err);
     }
   };
 
@@ -97,8 +104,12 @@ const AccountSettings = ({ plandata, handlegoogledelete, handleDelete }) => {
               <Settings className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-slate-800">Account Settings</h1>
-              <p className="text-slate-600 mt-1">Manage your profile and account preferences</p>
+              <h1 className="text-3xl font-bold text-slate-800">
+                Account Settings
+              </h1>
+              <p className="text-slate-600 mt-1">
+                Manage your profile and account preferences
+              </p>
             </div>
           </div>
         </div>
@@ -111,7 +122,9 @@ const AccountSettings = ({ plandata, handlegoogledelete, handleDelete }) => {
             <div className="p-2 bg-indigo-100 rounded-lg">
               <User className="w-5 h-5 text-[#46AA72]" />
             </div>
-            <h2 className="text-xl font-semibold text-slate-800">Profile Information</h2>
+            <h2 className="text-xl font-semibold text-slate-800">
+              Profile Information
+            </h2>
           </div>
 
           {/* Avatar Section */}
@@ -134,9 +147,13 @@ const AccountSettings = ({ plandata, handlegoogledelete, handleDelete }) => {
             </div>
 
             <div className="flex-1">
-              <h3 className="text-lg font-medium text-slate-800 mb-2">Profile Picture</h3>
-              <p className="text-slate-600 text-sm mb-4">Upload a new profile picture to personalize your account</p>
-              
+              <h3 className="text-lg font-medium text-slate-800 mb-2">
+                Profile Picture
+              </h3>
+              <p className="text-slate-600 text-sm mb-4">
+                Upload a new profile picture to personalize your account
+              </p>
+
               <div className="relative cursor-pointer">
                 <input
                   type="file"
@@ -146,12 +163,14 @@ const AccountSettings = ({ plandata, handlegoogledelete, handleDelete }) => {
                   disabled={uploading}
                 />
                 <button
-                  className={`flex items-center gap-2 px-4 py-2 border-2 border-dashed border-green-500 rounded-lg  transition-all ${uploading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  className={`flex items-center gap-2 px-4 py-2 border-2 border-dashed border-green-500 rounded-lg  transition-all ${
+                    uploading ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
                   disabled={uploading}
                 >
                   <Upload className="w-4 h-4 text-[#46AA72]" />
                   <span className="text-sm text-[#46AA72] font-medium">
-                    {uploading ? 'Uploading...' : 'Choose Image'}
+                    {uploading ? "Uploading..." : "Choose Image"}
                   </span>
                 </button>
               </div>
@@ -183,7 +202,9 @@ const AccountSettings = ({ plandata, handlegoogledelete, handleDelete }) => {
                 disabled
                 className="w-full border border-slate-300 rounded-lg px-4 py-3 text-sm bg-slate-50 text-slate-500 cursor-not-allowed"
               />
-              <p className="text-xs text-slate-500 mt-2">Email cannot be changed from this interface</p>
+              <p className="text-xs text-slate-500 mt-2">
+                Email cannot be changed from this interface
+              </p>
             </div>
 
             <div className="pt-2">
@@ -198,86 +219,95 @@ const AccountSettings = ({ plandata, handlegoogledelete, handleDelete }) => {
         </div>
 
         {/* Account Statistics & Actions Row */}
-<div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-  {/* Profile Overview */}
-  <div className="bg-white/80 backdrop-blur-md rounded-2xl border border-slate-200/60 shadow-xl p-6 space-y-6">
-    <h2 className="text-lg font-semibold text-slate-800 border-b pb-3">Account Overview</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Profile Overview */}
+          <div className="bg-white/80 backdrop-blur-md rounded-2xl border border-slate-200/60 shadow-xl p-6 space-y-6">
+            <h2 className="text-lg font-semibold text-slate-800 border-b pb-3">
+              Account Overview
+            </h2>
 
-    <div className="flex items-center gap-4">
-      <div className="p-3 bg-emerald-100 rounded-xl">
-        <Calendar className="w-6 h-6 text-emerald-600" />
+            <div className="flex items-center gap-4">
+              <div className="p-3 bg-emerald-100 rounded-xl">
+                <Calendar className="w-6 h-6 text-emerald-600" />
+              </div>
+              <div>
+                <p className="text-xs text-slate-500">Created</p>
+                <p className="text-sm font-medium text-slate-700">
+                  {auth.currentUser.metadata.creationTime}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <div className="p-3 bg-violet-100 rounded-xl">
+                <Crown className="w-6 h-6 text-violet-600" />
+              </div>
+              <div>
+                <p className="text-xs text-slate-500">Current Plan</p>
+                <p className="text-sm font-medium text-slate-700">
+                  {plandata.planType === "onetime"
+                    ? "Lifetime"
+                    : plandata.planType}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <div className="p-3 bg-blue-100 rounded-xl">
+                <Package className="w-6 h-6 text-blue-600" />
+              </div>
+              <div>
+                <p className="text-xs text-slate-500">Projects</p>
+                <p className="text-sm font-medium text-slate-700">
+                  {products.length} Showcased
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Actions */}
+          <div className="bg-white/80 backdrop-blur-md rounded-2xl border border-slate-200/60 shadow-xl p-6 flex flex-col justify-between">
+            <h2 className="text-lg font-semibold text-slate-800 border-b pb-3 mb-4">
+              Quick Actions
+            </h2>
+
+            <div className="space-y-4">
+              <button
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition-all"
+                onClick={() => {
+                  navigate("/change-password");
+                }}
+              >
+                Change Password
+              </button>
+
+              <button
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition-all"
+                onClick={handlelogout}
+              >
+                <LogOut className="w-4 h-4" />
+                Sign Out
+              </button>
+
+              <button
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-red-100 hover:bg-red-200 text-red-700 font-medium transition-all"
+                onClick={() => {
+                  if (
+                    auth.currentUser.providerData[0].providerId === "password"
+                  ) {
+                    setShowConfirm(true);
+                  } else {
+                    handlegoogledelete();
+                  }
+                }}
+              >
+                <Trash2 className="w-4 h-4" />
+                Delete Account
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <p className="text-xs text-slate-500">Created</p>
-        <p className="text-sm font-medium text-slate-700">{auth.currentUser.metadata.creationTime}</p>
-      </div>
-    </div>
-
-    <div className="flex items-center gap-4">
-      <div className="p-3 bg-violet-100 rounded-xl">
-        <Crown className="w-6 h-6 text-violet-600" />
-      </div>
-      <div>
-        <p className="text-xs text-slate-500">Current Plan</p>
-        <p className="text-sm font-medium text-slate-700">{plandata.planType === 'onetime' ? "Lifetime":plandata.planType}</p>
-      </div>
-    </div>
-
-    <div className="flex items-center gap-4">
-      <div className="p-3 bg-blue-100 rounded-xl">
-        <Package className="w-6 h-6 text-blue-600" />
-      </div>
-      <div>
-        <p className="text-xs text-slate-500">Projects</p>
-        <p className="text-sm font-medium text-slate-700">{products.length} Showcased</p>
-      </div>
-    </div>
-  </div>
-
-  {/* Actions */}
-  <div className="bg-white/80 backdrop-blur-md rounded-2xl border border-slate-200/60 shadow-xl p-6 flex flex-col justify-between">
-    <h2 className="text-lg font-semibold text-slate-800 border-b pb-3 mb-4">Quick Actions</h2>
-
-    <div className="space-y-4">
-
-      <button className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition-all"
-      onClick={()=>{
-        navigate("/change-password") 
-      }}>
-              Change Password
-        </button>        
-
-
-      <button
-        className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition-all"
-        onClick={handlelogout}
-      >
-        <LogOut className="w-4 h-4" />
-        Sign Out
-      </button>
-
-      <button
-        className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-red-100 hover:bg-red-200 text-red-700 font-medium transition-all"
-        onClick={() => {
-          if (auth.currentUser.providerData[0].providerId === "password") {
-            setShowConfirm(true);
-          } else {
-            handlegoogledelete();
-          }
-        }}
-      >
-        <Trash2 className="w-4 h-4" />
-        Delete Account
-      </button>
-    </div>
-  </div>
-</div>
-
-      </div>
-
-
-
-
 
       {/* Confirm Delete for email */}
       {showConfirm && (
@@ -295,15 +325,19 @@ const AccountSettings = ({ plandata, handlegoogledelete, handleDelete }) => {
                 <Trash2 className="w-6 h-6 text-red-600" />
               </div>
               <div>
-                <h2 className="text-xl font-semibold text-slate-900">Confirm Account Deletion</h2>
-                <p className="text-sm text-slate-600">This action is irreversible</p>
+                <h2 className="text-xl font-semibold text-slate-900">
+                  Confirm Account Deletion
+                </h2>
+                <p className="text-sm text-slate-600">
+                  This action is irreversible
+                </p>
               </div>
             </div>
 
             <div className="bg-red-50 border border-red-200 rounded-xl p-4 mb-6">
               <p className="text-sm text-red-700">
-                This will permanently delete your account and remove all data associated with it. 
-                This action cannot be undone.
+                This will permanently delete your account and remove all data
+                associated with it. This action cannot be undone.
               </p>
             </div>
 
