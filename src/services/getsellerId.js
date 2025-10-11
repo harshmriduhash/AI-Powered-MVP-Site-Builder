@@ -16,7 +16,7 @@ const getSellerId = async () => {
       const data = userSnap.data();
       return data.stripeAccountId || null;
     } else {
-      return null; 
+      return null;
     }
   } catch (error) {
     console.error("Error fetching seller ID:", error);
