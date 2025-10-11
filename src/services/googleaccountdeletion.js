@@ -11,7 +11,6 @@ const GoogleAccountDeletion =async () => {
     await reauthenticateWithPopup(user, provider);
     await deleteDoc(doc(db, "users", user.uid));
 
-
     await deleteUser(user);
 
     console.log("Google account deleted successfully");
