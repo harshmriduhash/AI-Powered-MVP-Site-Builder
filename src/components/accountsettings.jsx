@@ -21,7 +21,7 @@ const AccountSettings = ({ plandata, handlegoogledelete, handleDelete }) => {
   const {username} = useUsername();
   const currentUser = auth.currentUser;
   const [displayName, setDisplayName] = useState("");
-  const user = auth.currentUser;  
+  const user = auth.currentUser;
   const {products} = useProducts();  
   const storage = getStorage();
   const [uploading, setUploading] = useState(false);
