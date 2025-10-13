@@ -5,7 +5,6 @@ import { animate_scroll_section1, animate_scroll_section2, animate_scroll_sectio
 import { useEffect , useState } from 'react';
 import Sidebar from '../components/edit_sidebar';
 import Generated_Page_Nav from '../components/generated_page_nav';
-
 import TemplateFactory from '../components/TemplateFactory';
 import { TEMPLATES } from '../data/templates';
 import { addDoc , collection } from 'firebase/firestore';
