@@ -6,7 +6,8 @@ import { useEffect , useState } from 'react';
 import Sidebar from '../components/edit_sidebar';
 import Generated_Page_Nav from '../components/generated_page_nav';
 
-import MainContent from '../components/maincontent';
+import TemplateFactory from '../components/TemplateFactory';
+import { TEMPLATES } from '../data/templates';
 import { addDoc , collection } from 'firebase/firestore';
 import { db ,auth } from '../firebase';
 import usePlanData from '../hook/useplandata';
@@ -41,6 +42,7 @@ const PreviewandEdit = () => {
 
   const [showsidebar , setshowsidebar] = useState(false);
   const [preview , setPreview] = useState(false);
+  const [selectedTemplate, setSelectedTemplate] = useState('startup');
  
 const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -76,7 +78,7 @@ useEffect(() => {
 
 
  const location = useLocation();
-  const { productName, aiResponse } = location.state || {};
+  const { productName, aiResponse, selectedTemplate: templateFromState } = location.state || {};
   
   let parsedResponse = null;
   
@@ -120,6 +122,13 @@ useEffect(() => {
       setWhyUsePoints(parsedResponse.why_use.points);
     }
   },[parsedResponse])
+
+  // Set template from navigation state
+  useEffect(() => {
+    if (templateFromState) {
+      setSelectedTemplate(templateFromState);
+    }
+  }, [templateFromState]);
 
 
   useEffect(()=>{
@@ -282,11 +291,14 @@ handlePublishButton={handlePublishButton}
     whyusepoints={whyusepoints}
     setWhyuseLine={setWhyuseLine}
     setWhyUsePoints={setWhyUsePoints}
+    selectedTemplate={selectedTemplate}
+    setSelectedTemplate={setSelectedTemplate}
   />
 </div>
 
 
-<MainContent 
+<TemplateFactory
+  templateId={selectedTemplate}
   showsidebar={showsidebar}
   isMobile={isMobile}
   preview={preview}
@@ -301,6 +313,7 @@ handlePublishButton={handlePublishButton}
   featuresexplanation = {featuresexplanation}
   whyuseline={whyuseline}
   whyusepoints={whyusepoints}
+  pageid={user?.uid}
   isPreview={true}
 />
 </div>

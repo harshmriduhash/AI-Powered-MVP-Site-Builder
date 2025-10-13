@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import useUsername from "../services/getcurrentusername";
 
 import Loader from "../components/loading";
+import TemplateSelector from "../components/TemplateSelector";
+import { getTemplatePrompt, TEMPLATES } from "../data/templates";
 
 export default function IdeaInputAssistant() {
   const { username } = useUsername();
@@ -22,9 +24,13 @@ export default function IdeaInputAssistant() {
     description: "",
   });
 
+  const [selectedTemplate, setSelectedTemplate] = useState('startup');
+  const [showTemplateSelector, setShowTemplateSelector] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const prompt = `You are required to extract structured data from the provided product information. Do not include any explanations, comments, or extra words. Your output must be strictly and only the following in **valid JSON format**:
+  const getPrompt = () => {
+    return getTemplatePrompt(selectedTemplate, inputData.name, inputData.description) || 
+      `You are required to extract structured data from the provided product information. Do not include any explanations, comments, or extra words. Your output must be strictly and only the following in **valid JSON format**:
 {
  "heading": "(Describe what the product actually is, not just the name , 5 to 6 words only , unique )",
  "subheading": "(Provide a bit more detail explaining the heading ,at least 15 words )",
@@ -52,10 +58,12 @@ export default function IdeaInputAssistant() {
 Use the product name and description below to generate the required content:
 PRODUCT NAME: ${inputData.name}
 PRODUCT DESCRIPTION: ${inputData.description}`;
+  };
 
   const AI_Response = async () => {
     try {
       setLoading(true);
+      const prompt = getPrompt();
       const result = await model.generateContent(prompt);
       const response = await result.response;
       const text = await response.text();
@@ -85,6 +93,7 @@ PRODUCT DESCRIPTION: ${inputData.description}`;
         state: {
           productName: inputData.name,
           aiResponse: result,
+          selectedTemplate: selectedTemplate,
         },
       });
     }
@@ -164,7 +173,7 @@ PRODUCT DESCRIPTION: ${inputData.description}`;
                 </div>
 
                 {/* Product Description */}
-                <div className="mb-8 animate-fadeInLeft">
+                <div className="mb-6 animate-fadeInLeft">
                   <label className="block text-sm font-medium text-slate-700 mb-2 flex items-center">
                     <span>Product Description</span>
                     <span className="text-green-500 ml-1">*</span>
@@ -185,6 +194,57 @@ PRODUCT DESCRIPTION: ${inputData.description}`;
                   <p className="text-xs text-slate-500 mt-1">
                     Minimum 50 characters required
                   </p>
+                </div>
+
+                {/* Template Selection Toggle */}
+                <div className="mb-6 animate-fadeInLeft">
+                  <div className="flex items-center justify-between mb-3">
+                    <label className="block text-sm font-medium text-slate-700">
+                      Landing Page Template
+                    </label>
+                    <button
+                      type="button"
+                      onClick={() => setShowTemplateSelector(!showTemplateSelector)}
+                      className="text-sm text-[#46AA72] hover:text-[#3d9463] font-medium transition-colors"
+                    >
+                      {showTemplateSelector ? 'Hide Templates' : 'Choose Template'}
+                    </button>
+                  </div>
+                  
+                  {showTemplateSelector ? (
+                    <TemplateSelector
+                      selectedTemplate={selectedTemplate}
+                      onTemplateSelect={setSelectedTemplate}
+                      onPreviewTemplate={() => {}}
+                    />
+                  ) : (
+                    <div className="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <div className="text-sm font-medium text-slate-700">
+                            {TEMPLATES[selectedTemplate]?.name || 'Startup Launch Template'}
+                          </div>
+                          <div className="text-xs text-slate-500">
+                            {TEMPLATES[selectedTemplate]?.description || 'Perfect for SaaS, apps, and tech startups'}
+                          </div>
+                        </div>
+                        <div className="flex space-x-1">
+                          <div 
+                            className="w-3 h-3 rounded-full"
+                            style={{ backgroundColor: TEMPLATES[selectedTemplate]?.colors.primary || '#3B82F6' }}
+                          ></div>
+                          <div 
+                            className="w-3 h-3 rounded-full"
+                            style={{ backgroundColor: TEMPLATES[selectedTemplate]?.colors.secondary || '#1E40AF' }}
+                          ></div>
+                          <div 
+                            className="w-3 h-3 rounded-full"
+                            style={{ backgroundColor: TEMPLATES[selectedTemplate]?.colors.accent || '#10B981' }}
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Generate Button */}
