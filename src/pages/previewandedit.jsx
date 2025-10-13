@@ -1,6 +1,5 @@
 
 import { useLocation } from 'react-router-dom'
-
 import { animate_scroll_section1, animate_scroll_section2, animate_scroll_section3} from '../animations/Landing_animations';
 import { useEffect , useState } from 'react';
 import Sidebar from '../components/edit_sidebar';
