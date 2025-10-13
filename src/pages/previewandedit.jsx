@@ -13,7 +13,6 @@ import { useNavigate } from 'react-router-dom';
 import useUsername from '../services/getcurrentusername';
 
 
-
 const PreviewandEdit = () => {
 
   const navigate = useNavigate();
