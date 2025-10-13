@@ -1,4 +1,3 @@
-
 import { createContext, useState, useContext, useEffect } from "react";
 import { collection, onSnapshot } from "firebase/firestore";
 import { db, hasValidConfig } from "../firebase";
@@ -35,7 +34,6 @@ export const ProductsProvider = ({ children }) => {
       }
     );
 
-  
     return () => unsubscribe();
   }, [currentUser?.uid]);
 
