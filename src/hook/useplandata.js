@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import { subscribeToPlanData } from "../services/plandata";
 
-
 const usePlanData = () => {
   const [planData, setPlanData] = useState(null);
 
