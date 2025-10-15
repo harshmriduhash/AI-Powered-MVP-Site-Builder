@@ -1,4 +1,3 @@
-
 import { doc, onSnapshot } from "firebase/firestore";
 import { auth, db } from "../firebase";
 
@@ -7,7 +6,6 @@ let listeners = [];
 let unsubscribe = null;
 
 export const subscribeToPlanData = (callback) => {
-
   if (cachedPlanData !== null) {
     callback(cachedPlanData);
   }
@@ -27,8 +25,6 @@ export const subscribeToPlanData = (callback) => {
       });
     }
   }
-
-
 
   return () => {
     listeners = listeners.filter((cb) => cb !== callback);
