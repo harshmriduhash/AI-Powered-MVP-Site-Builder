@@ -7,7 +7,8 @@ const ProtectedRoute = ({ children }) => {
 
   if (authLoading) return <Loader />;
 
-  if (!currentUser || !currentUser.emailVerified) return <Navigate to="/login" />;
+  if (!currentUser || !currentUser.emailVerified)
+    return <Navigate to="/login" />;
 
   return children;
 };
