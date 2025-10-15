@@ -1,9 +1,17 @@
-import { useState } from 'react';
-import { Check, Eye, Palette } from 'lucide-react';
-import { TEMPLATES, TEMPLATE_CATEGORIES, getTemplatesByCategory } from '../data/templates';
+import { useState } from "react";
+import { Check, Eye, Palette } from "lucide-react";
+import {
+  TEMPLATES,
+  TEMPLATE_CATEGORIES,
+  getTemplatesByCategory,
+} from "../data/templates";
 
-const TemplateSelector = ({ selectedTemplate, onTemplateSelect, onPreviewTemplate }) => {
-  const [selectedCategory, setSelectedCategory] = useState('tech');
+const TemplateSelector = ({
+  selectedTemplate,
+  onTemplateSelect,
+  onPreviewTemplate,
+}) => {
+  const [selectedCategory, setSelectedCategory] = useState("tech");
   const [previewTemplate, setPreviewTemplate] = useState(null);
 
   const categories = Object.keys(TEMPLATE_CATEGORIES);
@@ -38,8 +46,8 @@ const TemplateSelector = ({ selectedTemplate, onTemplateSelect, onPreviewTemplat
               onClick={() => setSelectedCategory(category)}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                 selectedCategory === category
-                  ? 'bg-[#46AA72] text-white shadow-md'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? "bg-[#46AA72] text-white shadow-md"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }`}
             >
               <span className="mr-2">{TEMPLATE_CATEGORIES[category].icon}</span>
@@ -59,65 +67,71 @@ const TemplateSelector = ({ selectedTemplate, onTemplateSelect, onPreviewTemplat
             key={template.id}
             className={`relative bg-white rounded-xl border-2 transition-all duration-200 cursor-pointer hover:shadow-lg ${
               selectedTemplate === template.id
-                ? 'border-[#46AA72] shadow-lg'
-                : 'border-gray-200 hover:border-gray-300'
+                ? "border-[#46AA72] shadow-lg"
+                : "border-gray-200 hover:border-gray-300"
             }`}
             onClick={() => handleTemplateClick(template)}
           >
             {/* Template Preview */}
             <div className="aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 rounded-t-xl relative overflow-hidden">
               {/* Mock preview based on template colors */}
-              <div 
+              <div
                 className="w-full h-full relative"
                 style={{
-                  background: `linear-gradient(135deg, ${template.colors.primary}20, ${template.colors.secondary}20)`
+                  background: `linear-gradient(135deg, ${template.colors.primary}20, ${template.colors.secondary}20)`,
                 }}
               >
                 {/* Mock content */}
                 <div className="p-4 h-full flex flex-col justify-between">
                   <div className="space-y-2">
-                    <div 
+                    <div
                       className="h-4 rounded"
-                      style={{ 
-                        width: '70%', 
-                        backgroundColor: template.colors.primary 
+                      style={{
+                        width: "70%",
+                        backgroundColor: template.colors.primary,
                       }}
                     ></div>
-                    <div 
+                    <div
                       className="h-3 rounded"
-                      style={{ 
-                        width: '90%', 
-                        backgroundColor: template.colors.primary + '60' 
+                      style={{
+                        width: "90%",
+                        backgroundColor: template.colors.primary + "60",
                       }}
                     ></div>
-                    <div 
+                    <div
                       className="h-3 rounded"
-                      style={{ 
-                        width: '60%', 
-                        backgroundColor: template.colors.primary + '60' 
+                      style={{
+                        width: "60%",
+                        backgroundColor: template.colors.primary + "60",
                       }}
                     ></div>
                   </div>
-                  
+
                   <div className="space-y-2">
-                    <div 
+                    <div
                       className="h-8 rounded-lg"
-                      style={{ 
-                        backgroundColor: template.colors.primary 
+                      style={{
+                        backgroundColor: template.colors.primary,
                       }}
                     ></div>
                     <div className="grid grid-cols-3 gap-1">
-                      <div 
+                      <div
                         className="h-6 rounded"
-                        style={{ backgroundColor: template.colors.accent + '40' }}
+                        style={{
+                          backgroundColor: template.colors.accent + "40",
+                        }}
                       ></div>
-                      <div 
+                      <div
                         className="h-6 rounded"
-                        style={{ backgroundColor: template.colors.accent + '40' }}
+                        style={{
+                          backgroundColor: template.colors.accent + "40",
+                        }}
                       ></div>
-                      <div 
+                      <div
                         className="h-6 rounded"
-                        style={{ backgroundColor: template.colors.accent + '40' }}
+                        style={{
+                          backgroundColor: template.colors.accent + "40",
+                        }}
                       ></div>
                     </div>
                   </div>
@@ -143,22 +157,26 @@ const TemplateSelector = ({ selectedTemplate, onTemplateSelect, onPreviewTemplat
 
             {/* Template Info */}
             <div className="p-4">
-              <h4 className="font-semibold text-gray-900 mb-1">{template.name}</h4>
-              <p className="text-sm text-gray-600 mb-3">{template.description}</p>
-              
+              <h4 className="font-semibold text-gray-900 mb-1">
+                {template.name}
+              </h4>
+              <p className="text-sm text-gray-600 mb-3">
+                {template.description}
+              </p>
+
               {/* Color Palette */}
               <div className="flex space-x-1 mb-3">
-                <div 
+                <div
                   className="w-4 h-4 rounded-full border border-gray-200"
                   style={{ backgroundColor: template.colors.primary }}
                   title="Primary"
                 ></div>
-                <div 
+                <div
                   className="w-4 h-4 rounded-full border border-gray-200"
                   style={{ backgroundColor: template.colors.secondary }}
                   title="Secondary"
                 ></div>
-                <div 
+                <div
                   className="w-4 h-4 rounded-full border border-gray-200"
                   style={{ backgroundColor: template.colors.accent }}
                   title="Accent"
@@ -218,80 +236,101 @@ const TemplateSelector = ({ selectedTemplate, onTemplateSelect, onPreviewTemplat
                 <h3 className="text-xl font-semibold text-gray-900">
                   {previewTemplate.name} Template Preview
                 </h3>
-                <p className="text-gray-600 mt-1">{previewTemplate.description}</p>
+                <p className="text-gray-600 mt-1">
+                  {previewTemplate.description}
+                </p>
               </div>
               <button
                 onClick={closePreview}
                 className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               </button>
             </div>
-            
+
             <div className="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
               <div className="aspect-[16/10] bg-gray-50 rounded-lg border border-gray-200 overflow-hidden">
-                <div 
+                <div
                   className="w-full h-full relative"
                   style={{
-                    background: `linear-gradient(135deg, ${previewTemplate.colors.primary}20, ${previewTemplate.colors.secondary}20)`
+                    background: `linear-gradient(135deg, ${previewTemplate.colors.primary}20, ${previewTemplate.colors.secondary}20)`,
                   }}
                 >
                   {/* Detailed mock preview */}
                   <div className="p-8 h-full flex flex-col justify-between">
                     {/* Header */}
                     <div className="space-y-4">
-                      <div 
+                      <div
                         className="h-8 rounded-lg"
-                        style={{ 
-                          width: '60%', 
-                          backgroundColor: previewTemplate.colors.primary 
+                        style={{
+                          width: "60%",
+                          backgroundColor: previewTemplate.colors.primary,
                         }}
                       ></div>
-                      <div 
+                      <div
                         className="h-4 rounded"
-                        style={{ 
-                          width: '80%', 
-                          backgroundColor: previewTemplate.colors.primary + '60' 
+                        style={{
+                          width: "80%",
+                          backgroundColor:
+                            previewTemplate.colors.primary + "60",
                         }}
                       ></div>
-                      <div 
+                      <div
                         className="h-4 rounded"
-                        style={{ 
-                          width: '70%', 
-                          backgroundColor: previewTemplate.colors.primary + '60' 
+                        style={{
+                          width: "70%",
+                          backgroundColor:
+                            previewTemplate.colors.primary + "60",
                         }}
                       ></div>
                     </div>
-                    
+
                     {/* CTA Section */}
                     <div className="space-y-4">
-                      <div 
+                      <div
                         className="h-12 rounded-lg mx-auto"
-                        style={{ 
-                          width: '200px', 
-                          backgroundColor: previewTemplate.colors.primary 
+                        style={{
+                          width: "200px",
+                          backgroundColor: previewTemplate.colors.primary,
                         }}
                       ></div>
-                      
+
                       {/* Features Grid */}
                       <div className="grid grid-cols-3 gap-4 mt-8">
                         {[1, 2, 3].map((i) => (
                           <div key={i} className="space-y-2">
-                            <div 
+                            <div
                               className="h-16 rounded-lg"
-                              style={{ backgroundColor: previewTemplate.colors.accent + '20' }}
+                              style={{
+                                backgroundColor:
+                                  previewTemplate.colors.accent + "20",
+                              }}
                             ></div>
-                            <div 
+                            <div
                               className="h-3 rounded"
-                              style={{ backgroundColor: previewTemplate.colors.secondary + '40' }}
+                              style={{
+                                backgroundColor:
+                                  previewTemplate.colors.secondary + "40",
+                              }}
                             ></div>
-                            <div 
+                            <div
                               className="h-3 rounded"
-                              style={{ 
-                                width: '70%', 
-                                backgroundColor: previewTemplate.colors.secondary + '40' 
+                              style={{
+                                width: "70%",
+                                backgroundColor:
+                                  previewTemplate.colors.secondary + "40",
                               }}
                             ></div>
                           </div>
@@ -301,58 +340,83 @@ const TemplateSelector = ({ selectedTemplate, onTemplateSelect, onPreviewTemplat
                   </div>
                 </div>
               </div>
-              
+
               <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-3">Features Included</h4>
+                  <h4 className="font-semibold text-gray-900 mb-3">
+                    Features Included
+                  </h4>
                   <ul className="space-y-2">
                     {previewTemplate.features.map((feature, index) => (
-                      <li key={index} className="flex items-center text-sm text-gray-600">
+                      <li
+                        key={index}
+                        className="flex items-center text-sm text-gray-600"
+                      >
                         <Check className="w-4 h-4 text-[#46AA72] mr-2 flex-shrink-0" />
                         {feature}
                       </li>
                     ))}
                   </ul>
                 </div>
-                
+
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-3">Color Palette</h4>
+                  <h4 className="font-semibold text-gray-900 mb-3">
+                    Color Palette
+                  </h4>
                   <div className="space-y-3">
                     <div className="flex items-center space-x-3">
-                      <div 
+                      <div
                         className="w-8 h-8 rounded-lg border border-gray-200"
-                        style={{ backgroundColor: previewTemplate.colors.primary }}
+                        style={{
+                          backgroundColor: previewTemplate.colors.primary,
+                        }}
                       ></div>
                       <div>
-                        <div className="text-sm font-medium text-gray-900">Primary</div>
-                        <div className="text-xs text-gray-500">{previewTemplate.colors.primary}</div>
+                        <div className="text-sm font-medium text-gray-900">
+                          Primary
+                        </div>
+                        <div className="text-xs text-gray-500">
+                          {previewTemplate.colors.primary}
+                        </div>
                       </div>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <div 
+                      <div
                         className="w-8 h-8 rounded-lg border border-gray-200"
-                        style={{ backgroundColor: previewTemplate.colors.secondary }}
+                        style={{
+                          backgroundColor: previewTemplate.colors.secondary,
+                        }}
                       ></div>
                       <div>
-                        <div className="text-sm font-medium text-gray-900">Secondary</div>
-                        <div className="text-xs text-gray-500">{previewTemplate.colors.secondary}</div>
+                        <div className="text-sm font-medium text-gray-900">
+                          Secondary
+                        </div>
+                        <div className="text-xs text-gray-500">
+                          {previewTemplate.colors.secondary}
+                        </div>
                       </div>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <div 
+                      <div
                         className="w-8 h-8 rounded-lg border border-gray-200"
-                        style={{ backgroundColor: previewTemplate.colors.accent }}
+                        style={{
+                          backgroundColor: previewTemplate.colors.accent,
+                        }}
                       ></div>
                       <div>
-                        <div className="text-sm font-medium text-gray-900">Accent</div>
-                        <div className="text-xs text-gray-500">{previewTemplate.colors.accent}</div>
+                        <div className="text-sm font-medium text-gray-900">
+                          Accent
+                        </div>
+                        <div className="text-xs text-gray-500">
+                          {previewTemplate.colors.accent}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            
+
             <div className="flex items-center justify-end gap-3 p-6 border-t border-gray-200 bg-gray-50">
               <button
                 onClick={closePreview}
