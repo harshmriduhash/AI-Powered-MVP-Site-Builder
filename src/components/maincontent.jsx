@@ -1,28 +1,30 @@
-
-import { animate_scroll_section1 , animate_scroll_section2 , animate_scroll_section3 } from "../animations/Landing_animations";
+import {
+  animate_scroll_section1,
+  animate_scroll_section2,
+  animate_scroll_section3,
+} from "../animations/Landing_animations";
 import { useNavigate } from "react-router-dom";
 
-import { 
-  EyeOff, 
-  ArrowRight, 
-  ShieldCheck, 
-  Clock, 
-  CreditCard, 
-  Zap, 
-  Brush, 
-  LayoutGrid, 
-  Shield, 
-  Settings, 
-  Users, 
-  TrendingUp 
+import {
+  EyeOff,
+  ArrowRight,
+  ShieldCheck,
+  Clock,
+  CreditCard,
+  Zap,
+  Brush,
+  LayoutGrid,
+  Shield,
+  Settings,
+  Users,
+  TrendingUp,
 } from "lucide-react";
 import { useEffect } from "react";
 import { FcGoogle } from "react-icons/fc";
 
-import { getFunctions , httpsCallable } from 'firebase/functions';
-import { app } from '../firebase';
+import { getFunctions, httpsCallable } from "firebase/functions";
+import { app } from "../firebase";
 import { auth } from "../firebase";
-
 
 export default function MainContent({
   showsidebar,
@@ -42,42 +44,43 @@ export default function MainContent({
   pageid,
   isPreview,
 }) {
+  const user = auth.currentUser;
+  const navigate = useNavigate();
 
-const user = auth.currentUser;
-const navigate = useNavigate();
+  useEffect(() => {
+    console.log("page id from main content component:", pageid);
+  }, [pageid]);
 
+  useEffect(() => {
+    animate_scroll_section1(".section1");
+    animate_scroll_section2(".section2");
+    animate_scroll_section3(".section3");
+  }, []);
 
-  useEffect(()=>{
-
-    console.log("page id from main content component:",pageid);
-
-  },[pageid])
-
-        useEffect(()=>{
-          animate_scroll_section1(".section1");
-          animate_scroll_section2(".section2");
-          animate_scroll_section3(".section3");
-      },[])
-
-
-
-const handleSubscribeConnectedAccount = async () => { 
-  try {
-    const functions = getFunctions(app);
-    const createConnectedAccountCheckout = httpsCallable(functions, "createConnectedAccountCheckout");
-    const result = await createConnectedAccountCheckout(pageid);
-    window.location.href = result.data.url;
-  } catch (error) {
-    console.error("Error creating checkout session:", error);
-  }
-};
-
-
+  const handleSubscribeConnectedAccount = async () => {
+    try {
+      const functions = getFunctions(app);
+      const createConnectedAccountCheckout = httpsCallable(
+        functions,
+        "createConnectedAccountCheckout"
+      );
+      const result = await createConnectedAccountCheckout(pageid);
+      window.location.href = result.data.url;
+    } catch (error) {
+      console.error("Error creating checkout session:", error);
+    }
+  };
 
   return (
-    <main className={`flex-1 overflow-hidden ${showsidebar&&!isMobile ? 'ml-[250px]':''}`}>
+    <main
+      className={`flex-1 overflow-hidden ${
+        showsidebar && !isMobile ? "ml-[250px]" : ""
+      }`}
+    >
       {/* Hero Section */}
-      <section className={`relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 overflow-hidden`}>
+      <section
+        className={`relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 overflow-hidden`}
+      >
         {!showsidebar && preview && (
           <div
             className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-md bg-white text-gray-500 hover:text-gray-700 shadow-md hover:shadow-lg cursor-pointer transition-all duration-200 z-50 border border-gray-200"
@@ -99,7 +102,9 @@ const handleSubscribeConnectedAccount = async () => {
           <div className="text-center">
             {/* Premium Badge */}
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/90 backdrop-blur-sm border border-gray-200/50 shadow-xs mb-8 hover:shadow-sm transition-shadow duration-200">
-              <span className="text-sm font-medium text-gray-700 tracking-wider">✨ EXCLUSIVE EARLY ACCESS</span>
+              <span className="text-sm font-medium text-gray-700 tracking-wider">
+                ✨ EXCLUSIVE EARLY ACCESS
+              </span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight tracking-tight">
@@ -116,8 +121,10 @@ const handleSubscribeConnectedAccount = async () => {
             <div className="bg-blue-50/50 p-6 sm:p-8 rounded-2xl backdrop-blur-sm border border-blue-100/50 max-w-md lg:max-w-[640px] mx-auto md:max-w-[540px]">
               {/* Google Sign-in Button */}
               <div className="text-center">
-                <p className="text-sm text-gray-600 mb-3">Get early access updates</p>
-                <button 
+                <p className="text-sm text-gray-600 mb-3">
+                  Get early access updates
+                </p>
+                <button
                   onClick={handleGoogleSignup}
                   className="w-full flex items-center justify-center gap-3 bg-white hover:bg-gray-50 text-gray-700 font-medium py-3 px-6 rounded-lg border border-gray-300 shadow-sm hover:shadow-md transition-all duration-200"
                 >
@@ -136,10 +143,14 @@ const handleSubscribeConnectedAccount = async () => {
               {/* Reserve Button */}
               <div className="relative group">
                 <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 opacity-50 blur-sm group-hover:opacity-75 transition-all duration-300"></div>
-                <button className="relative w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:-translate-y-0.5"
-                onClick={handleSubscribeConnectedAccount}>
+                <button
+                  className="relative w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:-translate-y-0.5"
+                  onClick={handleSubscribeConnectedAccount}
+                >
                   <div className="flex items-center justify-center gap-2">
-                    <span className="text-lg">Become an Early Supporter for $5</span>
+                    <span className="text-lg">
+                      Become an Early Supporter for $5
+                    </span>
                     <ArrowRight className="w-5 h-5" />
                   </div>
                 </button>
@@ -148,8 +159,13 @@ const handleSubscribeConnectedAccount = async () => {
               {/* Benefits Grid */}
               <div className="grid grid-cols-3 gap-3 mt-6">
                 {benefits.map((item, index) => (
-                  <div key={index} className="bg-white/90 p-3 rounded-lg border border-gray-200/50 shadow-xs">
-                    <div className="text-lg sm:text-xl font-bold text-blue-600">{item.title}</div>
+                  <div
+                    key={index}
+                    className="bg-white/90 p-3 rounded-lg border border-gray-200/50 shadow-xs"
+                  >
+                    <div className="text-lg sm:text-xl font-bold text-blue-600">
+                      {item.title}
+                    </div>
                     <div className="text-xs text-gray-600">{item.subtitle}</div>
                   </div>
                 ))}
@@ -183,51 +199,44 @@ const handleSubscribeConnectedAccount = async () => {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
       </section>
 
-
       {!user && isPreview && (
-  <div className="bg-[#F0F6FB] border border-[#D6E4F0] text-center py-8 px-6 mb-8 rounded-2xl shadow-sm">
-    <h2 className="text-2xl font-bold text-[#003F2F]">
-      Your waitlist is ready — now unlock the full experience!
-    </h2>
-    <p className="text-gray-700 mt-3 text-lg">
-      Sign up to preview your full page and see how it converts.
-    </p>
+        <div className="bg-[#F0F6FB] border border-[#D6E4F0] text-center py-8 px-6 mb-8 rounded-2xl shadow-sm">
+          <h2 className="text-2xl font-bold text-[#003F2F]">
+            Your waitlist is ready — now unlock the full experience!
+          </h2>
+          <p className="text-gray-700 mt-3 text-lg">
+            Sign up to preview your full page and see how it converts.
+          </p>
 
-    <div className="mt-6 flex flex-col  justify-center items-center gap-4">
-      <button
-        className="bg-[#46AA72] text-white w-64 px-6 py-3 rounded-xl font-semibold hover:bg-[#3d9564] transition"
-        onClick={() => navigate("/register")}
-      >
-        Create Free Account
-      </button>
+          <div className="mt-6 flex flex-col  justify-center items-center gap-4">
+            <button
+              className="bg-[#46AA72] text-white w-64 px-6 py-3 rounded-xl font-semibold hover:bg-[#3d9564] transition"
+              onClick={() => navigate("/register")}
+            >
+              Create Free Account
+            </button>
 
-      
-      <p className="text-gray-700">
-        Already have an account?{" "}
-        <button
-          onClick={() => navigate("/login")}
-          className="text-[#003F2F] font-medium hover:underline"
-        >
-          Log In
-        </button>
-      </p>
-    </div>
-  </div>
-)}
-
-
+            <p className="text-gray-700">
+              Already have an account?{" "}
+              <button
+                onClick={() => navigate("/login")}
+                className="text-[#003F2F] font-medium hover:underline"
+              >
+                Log In
+              </button>
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Features Section */}
-<section
-  className={`py-20 bg-gray-50 ${(!showsidebar && user) ? "section1" : ""} ${
-    !user && isPreview ? "blur-md pointer-events-none select-none" : ""
-  }`}
->
-
-
-
-  
-
+      <section
+        className={`py-20 bg-gray-50 ${
+          !showsidebar && user ? "section1" : ""
+        } ${
+          !user && isPreview ? "blur-md pointer-events-none select-none" : ""
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -240,18 +249,25 @@ const handleSubscribeConnectedAccount = async () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features?.map((feature, index) => (
-              <div 
+              <div
                 key={index}
                 className="bg-white rounded-xl p-8 border border-gray-200 hover:border-blue-100 transition-all duration-300 hover:shadow-lg"
               >
-                <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 ${
-                  index % 6 === 0 ? 'bg-blue-50 text-blue-600' :
-                  index % 6 === 1 ? 'bg-purple-50 text-purple-600' :
-                  index % 6 === 2 ? 'bg-red-50 text-red-600' :
-                  index % 6 === 3 ? 'bg-cyan-50 text-cyan-600' :
-                  index % 6 === 4 ? 'bg-green-50 text-green-600' :
-                  'bg-yellow-50 text-yellow-600'
-                }`}>
+                <div
+                  className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 ${
+                    index % 6 === 0
+                      ? "bg-blue-50 text-blue-600"
+                      : index % 6 === 1
+                      ? "bg-purple-50 text-purple-600"
+                      : index % 6 === 2
+                      ? "bg-red-50 text-red-600"
+                      : index % 6 === 3
+                      ? "bg-cyan-50 text-cyan-600"
+                      : index % 6 === 4
+                      ? "bg-green-50 text-green-600"
+                      : "bg-yellow-50 text-yellow-600"
+                  }`}
+                >
                   {index % 6 === 0 && <Zap className="w-6 h-6" />}
                   {index % 6 === 1 && <CreditCard className="w-6 h-6" />}
                   {index % 6 === 2 && <Brush className="w-6 h-6" />}
@@ -272,57 +288,62 @@ const handleSubscribeConnectedAccount = async () => {
       </section>
 
       {/* Why Use Section */}
-<section
-  className={`w-full bg-[#F9F9FA] py-20 px-6 md:px-20${(!showsidebar && user) ? "section1" : ""} ${
-    !user && isPreview ? "blur-md pointer-events-none select-none" : ""
-  }`}
->
-  <div className="max-w-6xl mx-auto text-center">
-    <h2 className="text-4xl md:text-5xl font-light mb-6 text-gray-900 leading-tight">
-      Why Use{" "}
-      <span className="text-blue-600 font-medium">{productName}</span>?
-    </h2>
-    <p className="text-gray-600 text-lg md:text-xl mb-16 max-w-2xl mx-auto leading-relaxed">
-      {whyuseline || "The smarter way to validate your idea"}
-    </p>
+      <section
+        className={`w-full bg-[#F9F9FA] py-20 px-6 md:px-20${
+          !showsidebar && user ? "section1" : ""
+        } ${
+          !user && isPreview ? "blur-md pointer-events-none select-none" : ""
+        }`}
+      >
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-light mb-6 text-gray-900 leading-tight">
+            Why Use{" "}
+            <span className="text-blue-600 font-medium">{productName}</span>?
+          </h2>
+          <p className="text-gray-600 text-lg md:text-xl mb-16 max-w-2xl mx-auto leading-relaxed">
+            {whyuseline || "The smarter way to validate your idea"}
+          </p>
 
-    <div className="grid md:grid-cols-2 gap-12 text-left max-w-7xl mx-auto">
-      {whyusepoints.map((point, index) => {
-        // Optional: choose icon & color per index
-        const icons = [
-          { icon: Zap, color: "text-blue-600" },
-          { icon: Users, color: "text-green-600" },
-          { icon: Clock, color: "text-amber-600" },
-          { icon: TrendingUp, color: "text-purple-600" },
-        ];
-        const IconComponent = icons[index % icons.length].icon;
-        const iconColor = icons[index % icons.length].color;
+          <div className="grid md:grid-cols-2 gap-12 text-left max-w-7xl mx-auto">
+            {whyusepoints.map((point, index) => {
+              // Optional: choose icon & color per index
+              const icons = [
+                { icon: Zap, color: "text-blue-600" },
+                { icon: Users, color: "text-green-600" },
+                { icon: Clock, color: "text-amber-600" },
+                { icon: TrendingUp, color: "text-purple-600" },
+              ];
+              const IconComponent = icons[index % icons.length].icon;
+              const iconColor = icons[index % icons.length].color;
 
-        return (
-          <div
-            key={index}
-            className="flex items-start gap-6 p-6 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"
-          >
-            <div className="flex-shrink-0">
-              <IconComponent className={`${iconColor} w-5 h-5 mt-1`} />
-            </div>
-            <div>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                {point || ""}
-              </p>
-            </div>
+              return (
+                <div
+                  key={index}
+                  className="flex items-start gap-6 p-6 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"
+                >
+                  <div className="flex-shrink-0">
+                    <IconComponent className={`${iconColor} w-5 h-5 mt-1`} />
+                  </div>
+                  <div>
+                    <p className="text-lg text-gray-700 leading-relaxed">
+                      {point || ""}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-        );
-      })}
-    </div>
-  </div>
-</section>
-
+        </div>
+      </section>
 
       {/* CTA Section */}
-      <section className={`w-full bg-white py-20 px-4 sm:px-6 ${(!showsidebar && user) ? "section1" : ""} ${
-    !user && isPreview ? "blur-md pointer-events-none select-none" : ""
-  } `}>
+      <section
+        className={`w-full bg-white py-20 px-4 sm:px-6 ${
+          !showsidebar && user ? "section1" : ""
+        } ${
+          !user && isPreview ? "blur-md pointer-events-none select-none" : ""
+        } `}
+      >
         <div className="max-w-4xl mx-auto rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 p-8 sm:p-12 border border-gray-200/50 shadow-sm">
           <div className="text-center mb-10">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
@@ -331,15 +352,24 @@ const handleSubscribeConnectedAccount = async () => {
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Early adopters get <span className="font-semibold text-blue-600">exclusive pricing</span> and <span className="font-semibold text-purple-600">priority access</span>
+              Early adopters get{" "}
+              <span className="font-semibold text-blue-600">
+                exclusive pricing
+              </span>{" "}
+              and{" "}
+              <span className="font-semibold text-purple-600">
+                priority access
+              </span>
             </p>
           </div>
 
           <div className="max-w-md mx-auto space-y-6">
             {/* Google Early Access Sign-In */}
             <div className="text-center">
-              <p className="text-sm text-gray-500 mb-3">Get early access updates</p>
-              <button 
+              <p className="text-sm text-gray-500 mb-3">
+                Get early access updates
+              </p>
+              <button
                 onClick={handleGoogleSignup}
                 className="w-full flex items-center justify-center gap-3 bg-white hover:bg-gray-50 text-gray-700 font-medium py-3 px-6 rounded-lg border border-gray-300 shadow-sm hover:shadow-md transition-all duration-200"
               >
@@ -353,14 +383,18 @@ const handleSubscribeConnectedAccount = async () => {
               <span className="mx-4 text-sm text-gray-500">OR</span>
               <div className="flex-grow border-t border-gray-300"></div>
             </div>
-            
+
             {/* Main Reserve Now Button */}
             <div className="relative group">
               <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 opacity-75 blur-sm group-hover:opacity-100 transition-all duration-300 animate-pulse"></div>
-              <button className="relative w-full px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:-translate-y-0.5"
-              onClick={handleSubscribeConnectedAccount}>
+              <button
+                className="relative w-full px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:-translate-y-0.5"
+                onClick={handleSubscribeConnectedAccount}
+              >
                 <div className="flex items-center justify-center gap-2">
-                  <span className="text-lg">Become an Early Supporter for $5</span>
+                  <span className="text-lg">
+                    Become an Early Supporter for $5
+                  </span>
                   <ArrowRight className="w-5 h-5" />
                 </div>
               </button>
@@ -368,8 +402,13 @@ const handleSubscribeConnectedAccount = async () => {
 
             <div className="grid grid-cols-3 gap-4 mt-8 text-center">
               {benefits.map((item, index) => (
-                <div key={index} className="bg-white/90 p-3 rounded-lg border border-gray-200/50">
-                  <div className="text-xl font-bold text-blue-600">{item.title}</div>
+                <div
+                  key={index}
+                  className="bg-white/90 p-3 rounded-lg border border-gray-200/50"
+                >
+                  <div className="text-xl font-bold text-blue-600">
+                    {item.title}
+                  </div>
                   <div className="text-xs text-gray-600">{item.subtitle}</div>
                 </div>
               ))}
