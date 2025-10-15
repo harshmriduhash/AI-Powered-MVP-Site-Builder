@@ -1,169 +1,169 @@
 // Template configuration for different landing page styles
 export const TEMPLATES = {
   startup: {
-    id: 'startup',
-    name: 'Startup Launch',
-    description: 'Perfect for SaaS, apps, and tech startups',
-    category: 'tech',
-    preview: '/templates/startup-preview.png',
+    id: "startup",
+    name: "Startup Launch",
+    description: "Perfect for SaaS, apps, and tech startups",
+    category: "tech",
+    preview: "/templates/startup-preview.png",
     colors: {
-      primary: '#3B82F6',
-      secondary: '#1E40AF',
-      accent: '#10B981',
-      background: '#F8FAFC'
+      primary: "#3B82F6",
+      secondary: "#1E40AF",
+      accent: "#10B981",
+      background: "#F8FAFC",
     },
     features: [
-      'Hero with gradient background',
-      'Feature grid layout',
-      'Social proof section',
-      'Pricing tiers',
-      'FAQ section'
+      "Hero with gradient background",
+      "Feature grid layout",
+      "Social proof section",
+      "Pricing tiers",
+      "FAQ section",
     ],
-    aiPrompt: `Generate content for a modern tech startup landing page. Focus on innovation, efficiency, and cutting-edge solutions. Use tech-forward language and emphasize scalability and performance.`
+    aiPrompt: `Generate content for a modern tech startup landing page. Focus on innovation, efficiency, and cutting-edge solutions. Use tech-forward language and emphasize scalability and performance.`,
   },
-  
+
   ecommerce: {
-    id: 'ecommerce',
-    name: 'E-commerce Store',
-    description: 'Ideal for online stores and product launches',
-    category: 'retail',
-    preview: '/templates/ecommerce-preview.png',
+    id: "ecommerce",
+    name: "E-commerce Store",
+    description: "Ideal for online stores and product launches",
+    category: "retail",
+    preview: "/templates/ecommerce-preview.png",
     colors: {
-      primary: '#EF4444',
-      secondary: '#DC2626',
-      accent: '#F59E0B',
-      background: '#FFFBEB'
+      primary: "#EF4444",
+      secondary: "#DC2626",
+      accent: "#F59E0B",
+      background: "#FFFBEB",
     },
     features: [
-      'Product showcase hero',
-      'Benefits grid',
-      'Customer testimonials',
-      'Limited time offers',
-      'Trust badges'
+      "Product showcase hero",
+      "Benefits grid",
+      "Customer testimonials",
+      "Limited time offers",
+      "Trust badges",
     ],
-    aiPrompt: `Generate content for an e-commerce product launch. Focus on value, quality, and customer satisfaction. Use persuasive language that drives purchases and emphasizes product benefits.`
+    aiPrompt: `Generate content for an e-commerce product launch. Focus on value, quality, and customer satisfaction. Use persuasive language that drives purchases and emphasizes product benefits.`,
   },
 
   service: {
-    id: 'service',
-    name: 'Professional Services',
-    description: 'Great for consulting, agencies, and service businesses',
-    category: 'professional',
-    preview: '/templates/service-preview.png',
+    id: "service",
+    name: "Professional Services",
+    description: "Great for consulting, agencies, and service businesses",
+    category: "professional",
+    preview: "/templates/service-preview.png",
     colors: {
-      primary: '#7C3AED',
-      secondary: '#5B21B6',
-      accent: '#059669',
-      background: '#F3F4F6'
+      primary: "#7C3AED",
+      secondary: "#5B21B6",
+      accent: "#059669",
+      background: "#F3F4F6",
     },
     features: [
-      'Professional hero section',
-      'Service highlights',
-      'Case studies',
-      'Team credibility',
-      'Contact forms'
+      "Professional hero section",
+      "Service highlights",
+      "Case studies",
+      "Team credibility",
+      "Contact forms",
     ],
-    aiPrompt: `Generate content for a professional services business. Focus on expertise, reliability, and proven results. Use authoritative language that builds trust and demonstrates competence.`
+    aiPrompt: `Generate content for a professional services business. Focus on expertise, reliability, and proven results. Use authoritative language that builds trust and demonstrates competence.`,
   },
 
   mobile: {
-    id: 'mobile',
-    name: 'Mobile App',
-    description: 'Optimized for mobile app launches and downloads',
-    category: 'mobile',
-    preview: '/templates/mobile-preview.png',
+    id: "mobile",
+    name: "Mobile App",
+    description: "Optimized for mobile app launches and downloads",
+    category: "mobile",
+    preview: "/templates/mobile-preview.png",
     colors: {
-      primary: '#8B5CF6',
-      secondary: '#7C3AED',
-      accent: '#06B6D4',
-      background: '#F0F9FF'
+      primary: "#8B5CF6",
+      secondary: "#7C3AED",
+      accent: "#06B6D4",
+      background: "#F0F9FF",
     },
     features: [
-      'App mockup hero',
-      'Feature highlights',
-      'Download buttons',
-      'App store badges',
-      'User reviews'
+      "App mockup hero",
+      "Feature highlights",
+      "Download buttons",
+      "App store badges",
+      "User reviews",
     ],
-    aiPrompt: `Generate content for a mobile app launch. Focus on user experience, convenience, and mobile-first benefits. Use engaging language that encourages app downloads and usage.`
+    aiPrompt: `Generate content for a mobile app launch. Focus on user experience, convenience, and mobile-first benefits. Use engaging language that encourages app downloads and usage.`,
   },
 
   nonprofit: {
-    id: 'nonprofit',
-    name: 'Non-Profit',
-    description: 'Designed for charities, causes, and community initiatives',
-    category: 'social',
-    preview: '/templates/nonprofit-preview.png',
+    id: "nonprofit",
+    name: "Non-Profit",
+    description: "Designed for charities, causes, and community initiatives",
+    category: "social",
+    preview: "/templates/nonprofit-preview.png",
     colors: {
-      primary: '#059669',
-      secondary: '#047857',
-      accent: '#DC2626',
-      background: '#ECFDF5'
+      primary: "#059669",
+      secondary: "#047857",
+      accent: "#DC2626",
+      background: "#ECFDF5",
     },
     features: [
-      'Mission-focused hero',
-      'Impact stories',
-      'Donation calls-to-action',
-      'Volunteer opportunities',
-      'Transparency section'
+      "Mission-focused hero",
+      "Impact stories",
+      "Donation calls-to-action",
+      "Volunteer opportunities",
+      "Transparency section",
     ],
-    aiPrompt: `Generate content for a non-profit organization or social cause. Focus on impact, community, and making a difference. Use emotional and inspiring language that motivates action and support.`
+    aiPrompt: `Generate content for a non-profit organization or social cause. Focus on impact, community, and making a difference. Use emotional and inspiring language that motivates action and support.`,
   },
 
   education: {
-    id: 'education',
-    name: 'Educational',
-    description: 'Perfect for courses, workshops, and educational content',
-    category: 'education',
-    preview: '/templates/education-preview.png',
+    id: "education",
+    name: "Educational",
+    description: "Perfect for courses, workshops, and educational content",
+    category: "education",
+    preview: "/templates/education-preview.png",
     colors: {
-      primary: '#2563EB',
-      secondary: '#1D4ED8',
-      accent: '#F59E0B',
-      background: '#EFF6FF'
+      primary: "#2563EB",
+      secondary: "#1D4ED8",
+      accent: "#F59E0B",
+      background: "#EFF6FF",
     },
     features: [
-      'Learning-focused hero',
-      'Course highlights',
-      'Instructor credentials',
-      'Student success stories',
-      'Enrollment process'
+      "Learning-focused hero",
+      "Course highlights",
+      "Instructor credentials",
+      "Student success stories",
+      "Enrollment process",
     ],
-    aiPrompt: `Generate content for an educational platform or course. Focus on learning outcomes, expertise, and student success. Use encouraging language that emphasizes growth and knowledge acquisition.`
-  }
+    aiPrompt: `Generate content for an educational platform or course. Focus on learning outcomes, expertise, and student success. Use encouraging language that emphasizes growth and knowledge acquisition.`,
+  },
 };
 
 export const TEMPLATE_CATEGORIES = {
   tech: {
-    name: 'Technology',
-    icon: '💻',
-    description: 'For tech startups, SaaS, and digital products'
+    name: "Technology",
+    icon: "💻",
+    description: "For tech startups, SaaS, and digital products",
   },
   retail: {
-    name: 'Retail & E-commerce',
-    icon: '🛒',
-    description: 'For online stores and product launches'
+    name: "Retail & E-commerce",
+    icon: "🛒",
+    description: "For online stores and product launches",
   },
   professional: {
-    name: 'Professional Services',
-    icon: '💼',
-    description: 'For consulting, agencies, and services'
+    name: "Professional Services",
+    icon: "💼",
+    description: "For consulting, agencies, and services",
   },
   mobile: {
-    name: 'Mobile Apps',
-    icon: '📱',
-    description: 'For mobile applications and downloads'
+    name: "Mobile Apps",
+    icon: "📱",
+    description: "For mobile applications and downloads",
   },
   social: {
-    name: 'Social Impact',
-    icon: '🤝',
-    description: 'For non-profits and community initiatives'
+    name: "Social Impact",
+    icon: "🤝",
+    description: "For non-profits and community initiatives",
   },
   education: {
-    name: 'Education',
-    icon: '🎓',
-    description: 'For courses, workshops, and learning platforms'
-  }
+    name: "Education",
+    icon: "🎓",
+    description: "For courses, workshops, and learning platforms",
+  },
 };
 
 // Template-specific content generators
@@ -208,7 +208,9 @@ ${template.aiPrompt}`;
 
 // Get templates by category
 export const getTemplatesByCategory = (category) => {
-  return Object.values(TEMPLATES).filter(template => template.category === category);
+  return Object.values(TEMPLATES).filter(
+    (template) => template.category === category
+  );
 };
 
 // Get all categories
