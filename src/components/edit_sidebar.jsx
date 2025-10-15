@@ -1,4 +1,13 @@
-import { Edit3, Type, List, Save, X, Star, HelpCircle, Palette } from "lucide-react";
+import {
+  Edit3,
+  Type,
+  List,
+  Save,
+  X,
+  Star,
+  HelpCircle,
+  Palette,
+} from "lucide-react";
 import { auth } from "../firebase";
 import { TEMPLATES } from "../data/templates";
 
@@ -149,7 +158,9 @@ const Sidebar = ({
         <section>
           <div className="flex items-center space-x-2 mb-4">
             <Palette className="w-4 h-4 text-gray-600" />
-            <h2 className="text-lg font-medium text-gray-900">Template Style</h2>
+            <h2 className="text-lg font-medium text-gray-900">
+              Template Style
+            </h2>
           </div>
 
           <div className="space-y-3">
@@ -167,27 +178,37 @@ const Sidebar = ({
                 </option>
               ))}
             </select>
-            
+
             <div className="text-xs text-gray-500 mt-2">
               <div className="flex items-center gap-2 mb-1">
                 <div className="flex space-x-1">
-                  <div 
+                  <div
                     className="w-3 h-3 rounded-full border border-gray-200"
-                    style={{ backgroundColor: TEMPLATES[selectedTemplate]?.colors.primary }}
+                    style={{
+                      backgroundColor:
+                        TEMPLATES[selectedTemplate]?.colors.primary,
+                    }}
                   ></div>
-                  <div 
+                  <div
                     className="w-3 h-3 rounded-full border border-gray-200"
-                    style={{ backgroundColor: TEMPLATES[selectedTemplate]?.colors.secondary }}
+                    style={{
+                      backgroundColor:
+                        TEMPLATES[selectedTemplate]?.colors.secondary,
+                    }}
                   ></div>
-                  <div 
+                  <div
                     className="w-3 h-3 rounded-full border border-gray-200"
-                    style={{ backgroundColor: TEMPLATES[selectedTemplate]?.colors.accent }}
+                    style={{
+                      backgroundColor:
+                        TEMPLATES[selectedTemplate]?.colors.accent,
+                    }}
                   ></div>
                 </div>
                 <span>Color palette</span>
               </div>
               <p className="text-xs">
-                {TEMPLATES[selectedTemplate]?.features.slice(0, 2).join(', ')}...
+                {TEMPLATES[selectedTemplate]?.features.slice(0, 2).join(", ")}
+                ...
               </p>
             </div>
           </div>
