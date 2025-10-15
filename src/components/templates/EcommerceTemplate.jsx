@@ -1,21 +1,21 @@
-import { 
-  EyeOff, 
-  ArrowRight, 
-  ShieldCheck, 
-  Clock, 
-  CreditCard, 
+import {
+  EyeOff,
+  ArrowRight,
+  ShieldCheck,
+  Clock,
+  CreditCard,
   Star,
   ShoppingBag,
   Truck,
   RefreshCw,
   Heart,
   Users,
-  TrendingUp 
+  TrendingUp,
 } from "lucide-react";
 import { useEffect } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { getFunctions , httpsCallable } from 'firebase/functions';
-import { app } from '../../firebase';
+import { getFunctions, httpsCallable } from "firebase/functions";
+import { app } from "../../firebase";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 
@@ -40,14 +40,17 @@ export default function EcommerceTemplate({
   const user = auth.currentUser;
   const navigate = useNavigate();
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log("page id from ecommerce template:", pageid);
-  },[pageid])
+  }, [pageid]);
 
-  const handleSubscribeConnectedAccount = async () => { 
+  const handleSubscribeConnectedAccount = async () => {
     try {
       const functions = getFunctions(app);
-      const createConnectedAccountCheckout = httpsCallable(functions, "createConnectedAccountCheckout");
+      const createConnectedAccountCheckout = httpsCallable(
+        functions,
+        "createConnectedAccountCheckout"
+      );
       const result = await createConnectedAccountCheckout(pageid);
       window.location.href = result.data.url;
     } catch (error) {
@@ -56,9 +59,15 @@ export default function EcommerceTemplate({
   };
 
   return (
-    <main className={`flex-1 overflow-hidden ${showsidebar&&!isMobile ? 'ml-[250px]':''}`}>
+    <main
+      className={`flex-1 overflow-hidden ${
+        showsidebar && !isMobile ? "ml-[250px]" : ""
+      }`}
+    >
       {/* Hero Section */}
-      <section className={`relative min-h-screen bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50 overflow-hidden`}>
+      <section
+        className={`relative min-h-screen bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50 overflow-hidden`}
+      >
         {!showsidebar && preview && (
           <div
             className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-md bg-white text-gray-500 hover:text-gray-700 shadow-md hover:shadow-lg cursor-pointer transition-all duration-200 z-50 border border-gray-200"
@@ -82,7 +91,9 @@ export default function EcommerceTemplate({
             <div className="text-center lg:text-left">
               {/* Badge */}
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/90 backdrop-blur-sm border border-red-200/50 shadow-xs mb-8 hover:shadow-sm transition-shadow duration-200">
-                <span className="text-sm font-medium text-red-700 tracking-wider">🔥 LIMITED TIME OFFER</span>
+                <span className="text-sm font-medium text-red-700 tracking-wider">
+                  🔥 LIMITED TIME OFFER
+                </span>
               </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight tracking-tight">
@@ -99,17 +110,21 @@ export default function EcommerceTemplate({
               <div className="mb-8">
                 <div className="flex items-center justify-center lg:justify-start gap-4">
                   <span className="text-4xl font-bold text-red-600">$29</span>
-                  <span className="text-2xl text-gray-400 line-through">$49</span>
+                  <span className="text-2xl text-gray-400 line-through">
+                    $49
+                  </span>
                   <span className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">
                     Save 40%
                   </span>
                 </div>
-                <p className="text-gray-600 mt-2">Limited time offer - Don't miss out!</p>
+                <p className="text-gray-600 mt-2">
+                  Limited time offer - Don't miss out!
+                </p>
               </div>
 
               {/* CTA Buttons */}
               <div className="space-y-4 mb-8">
-                <button 
+                <button
                   onClick={handleGoogleSignup}
                   className="w-full lg:w-auto px-8 py-4 bg-gradient-to-r from-red-600 to-orange-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-3"
                 >
@@ -117,8 +132,8 @@ export default function EcommerceTemplate({
                   <span>Pre-Order Now</span>
                   <ArrowRight className="w-5 h-5" />
                 </button>
-                
-                <button 
+
+                <button
                   onClick={handleSubscribeConnectedAccount}
                   className="w-full lg:w-auto px-8 py-3 bg-white border-2 border-red-200 text-red-600 font-semibold rounded-xl hover:bg-red-50 transition-all duration-300 flex items-center justify-center gap-2"
                 >
@@ -152,17 +167,24 @@ export default function EcommerceTemplate({
                     <div className="w-24 h-24 bg-gradient-to-br from-red-500 to-orange-500 rounded-2xl mx-auto mb-4 flex items-center justify-center">
                       <ShoppingBag className="w-12 h-12 text-white" />
                     </div>
-                    <div className="text-lg font-semibold text-gray-900">{productName}</div>
+                    <div className="text-lg font-semibold text-gray-900">
+                      {productName}
+                    </div>
                     <div className="flex items-center justify-center gap-1 mt-2">
-                      {[1,2,3,4,5].map((star) => (
-                        <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star
+                          key={star}
+                          className="w-4 h-4 fill-yellow-400 text-yellow-400"
+                        />
                       ))}
-                      <span className="text-sm text-gray-600 ml-2">(4.9/5)</span>
+                      <span className="text-sm text-gray-600 ml-2">
+                        (4.9/5)
+                      </span>
                     </div>
                   </div>
                 </div>
               </div>
-              
+
               {/* Floating Elements */}
               <div className="absolute -top-4 -right-4 bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-sm font-bold animate-bounce">
                 Best Seller!
@@ -206,9 +228,11 @@ export default function EcommerceTemplate({
       )}
 
       {/* Product Features Section */}
-      <section className={`py-20 bg-white ${(!showsidebar && user) ? "section1" : ""} ${
-        !user && isPreview ? "blur-md pointer-events-none select-none" : ""
-      }`}>
+      <section
+        className={`py-20 bg-white ${!showsidebar && user ? "section1" : ""} ${
+          !user && isPreview ? "blur-md pointer-events-none select-none" : ""
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -221,18 +245,25 @@ export default function EcommerceTemplate({
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features?.map((feature, index) => (
-              <div 
+              <div
                 key={index}
                 className="bg-gray-50 rounded-xl p-8 border border-gray-200 hover:border-red-100 transition-all duration-300 hover:shadow-lg"
               >
-                <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 ${
-                  index % 6 === 0 ? 'bg-red-50 text-red-600' :
-                  index % 6 === 1 ? 'bg-orange-50 text-orange-600' :
-                  index % 6 === 2 ? 'bg-yellow-50 text-yellow-600' :
-                  index % 6 === 3 ? 'bg-green-50 text-green-600' :
-                  index % 6 === 4 ? 'bg-blue-50 text-blue-600' :
-                  'bg-purple-50 text-purple-600'
-                }`}>
+                <div
+                  className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 ${
+                    index % 6 === 0
+                      ? "bg-red-50 text-red-600"
+                      : index % 6 === 1
+                      ? "bg-orange-50 text-orange-600"
+                      : index % 6 === 2
+                      ? "bg-yellow-50 text-yellow-600"
+                      : index % 6 === 3
+                      ? "bg-green-50 text-green-600"
+                      : index % 6 === 4
+                      ? "bg-blue-50 text-blue-600"
+                      : "bg-purple-50 text-purple-600"
+                  }`}
+                >
                   {index % 6 === 0 && <ShoppingBag className="w-6 h-6" />}
                   {index % 6 === 1 && <Star className="w-6 h-6" />}
                   {index % 6 === 2 && <Truck className="w-6 h-6" />}
@@ -253,9 +284,13 @@ export default function EcommerceTemplate({
       </section>
 
       {/* Benefits Section */}
-      <section className={`w-full bg-gradient-to-br from-red-50 to-orange-50 py-20 px-6 md:px-20 ${(!showsidebar && user) ? "section1" : ""} ${
-        !user && isPreview ? "blur-md pointer-events-none select-none" : ""
-      }`}>
+      <section
+        className={`w-full bg-gradient-to-br from-red-50 to-orange-50 py-20 px-6 md:px-20 ${
+          !showsidebar && user ? "section1" : ""
+        } ${
+          !user && isPreview ? "blur-md pointer-events-none select-none" : ""
+        }`}
+      >
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-light mb-6 text-gray-900 leading-tight">
             What Makes Us{" "}
@@ -294,9 +329,13 @@ export default function EcommerceTemplate({
       </section>
 
       {/* Final CTA Section */}
-      <section className={`w-full bg-gradient-to-br from-red-600 to-orange-600 py-20 px-4 sm:px-6 ${(!showsidebar && user) ? "section1" : ""} ${
-        !user && isPreview ? "blur-md pointer-events-none select-none" : ""
-      }`}>
+      <section
+        className={`w-full bg-gradient-to-br from-red-600 to-orange-600 py-20 px-4 sm:px-6 ${
+          !showsidebar && user ? "section1" : ""
+        } ${
+          !user && isPreview ? "blur-md pointer-events-none select-none" : ""
+        }`}
+      >
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
             Don't Miss Out on This Limited Offer
@@ -306,15 +345,15 @@ export default function EcommerceTemplate({
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button 
+            <button
               onClick={handleGoogleSignup}
               className="px-8 py-4 bg-white text-red-600 font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex items-center gap-3"
             >
               <ShoppingBag className="w-5 h-5" />
               <span>Pre-Order Now - $29</span>
             </button>
-            
-            <button 
+
+            <button
               onClick={handleSubscribeConnectedAccount}
               className="px-8 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center gap-2"
             >
@@ -324,7 +363,10 @@ export default function EcommerceTemplate({
           </div>
 
           <div className="mt-8 text-red-100 text-sm">
-            <p>✓ Free shipping worldwide • ✓ 30-day money-back guarantee • ✓ Secure payment</p>
+            <p>
+              ✓ Free shipping worldwide • ✓ 30-day money-back guarantee • ✓
+              Secure payment
+            </p>
           </div>
         </div>
       </section>
